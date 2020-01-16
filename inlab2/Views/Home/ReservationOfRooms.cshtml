@@ -1,0 +1,272 @@
+﻿
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <style>
+        body {
+            background: url("https://www.royal-hawaiian.com/wp-content/uploads/sites/16/2017/10/lux376gr-153417-The-Royal-Hawaiian-Historic-Garden-Suite-Med.jpg");
+        }
+
+        .container {
+            height: 700px;
+            background-color: rgba(52,73,94,0.7);
+            border-radius: 4px;
+            margin: 0 auto;
+            float: left;
+            margin-top: 20px;
+        }
+
+        input {
+            height: 25px;
+            width: 200px;
+            margin: 0 auto;
+            align-self: auto;
+            float: right;
+            margin-right: 20px;
+            margin-top: 5px;
+        }
+           
+        label {
+            float: left;
+            margin-top: 10px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        function validations()
+        {
+
+            var name = document.getElementById("NameField").value;
+            var contactNumber = document.getElementById("contactNumField").value;
+
+            var cnic = document.getElementById("CNICField").value;
+            var address = document.getElementById("AddressField").value;
+            var emailId = document.getElementById("EmailIDField").value;
+
+
+            if (name == "" || contactNumber == "" || cnic == "" || address == "") {
+                alert("Please fill in the missing fields.");
+                return false;
+            }
+            
+
+            var len = name.length;
+            for (var x = 0; x < len; x++) {
+                var char = name.charAt(x);
+                if (((char < 65 || (char > 90 && char < 97) || char > 122))) {
+                    if (char != ' ')
+                    {
+                        alert  ("Name field can have alphabets only");
+                        return false;
+                    }
+                }
+            }
+            var len = cnic.length;
+            if (len !=15) {
+                alert ("CNIC must be 15 digits long");
+                return false;
+            }
+            if (cnic.charAt(5) != '-' || cnic.charAt(13) != '-') {
+
+                alert ("Invalid CNIC Format");
+                return false;
+            }
+            for (var x = 0; x < len; x++) {
+                var char = cnic.charAt(x);
+                if (x != 5 && x != 13) {
+                    if (char < '0' || char > '9') {
+
+                        alert("Invalid CNIC Format");
+                        return false;
+
+                    }
+                }
+            }
+
+        }
+        function checkForEmptyFields() {
+
+           
+            var name = document.getElementById("NameField").value;
+            var contactNumber = document.getElementById("contactNumField").value;
+            
+            var cnic = document.getElementById("CNICField").value;
+            var address = document.getElementById("AddressField").value;
+            var emailId = document.getElementById("EmailIDField").value;
+
+
+            if (name == "" || contactNumber == ""  || cnic == "" || address == "") {
+                document.getElementById("status").innerText = "Please fill in the missing fields.";
+                return false;
+            }
+                    return true;
+
+        }
+
+
+                function validateName() {
+                    var name = document.getElementById("NameField").value;
+                    var len = name.length;
+
+
+                    for (var x = 0; x < len; x++) {
+                        var char = name.charAt(x);
+                        if (((char < 65 || (char > 90 && char < 97) || char > 122))) {
+                            if (char != ' ') {
+                                document.getElementById("status3").innerText = "Please enter a name that contains alphabets only.";
+                                return false;
+                            }
+                        }
+                    }
+                    return true;
+                }
+
+                function validateCNIC()
+                {
+                    var cnic = document.getElementById("CNICField").value;
+                    var len = cnic.length;
+                    if (len != 15) {
+                        document.getElementById("status4").innerText = "CNIC must be 15 characters long.";
+                        return false;
+                    }
+                    if (cnic.charAt(5) != '-' || cnic.charAt(13) != '-') {
+                        document.getElementById("status4").innerText = "Please enter a cnic in the specified format. Hyphen Missing";
+                        return false;
+                    }
+                    for (var x = 0; x < len; x++) {
+                        var char = cnic.charAt(x);
+                        if (x == 5 || x==13)
+                        {
+                            if (cnic.charAt(x) != '-') { document.getElementById("status4").innerText = "Please enter a cnic in the specified format. Hyphen Missing";
+                                return false;}
+                        }
+                        else
+                        {
+                            if (char < '0' || char > '9') {
+
+                                document.getElementById("status4").innerText = "Please enter a cnic in the specified format.";
+                                return false;
+
+                            }
+                            }
+                        }
+
+                    return true;
+                }
+                function validateContactNum() {
+                    var num = document.getElementById("contactNumField").value;
+                    var len = num.length;
+                    if (len != 11) {
+                        document.getElementById("status5").innerText = "Please enter a valid 11 digit phone number without spaces.";
+                        return false;
+                    }
+
+                    for (var x = 0; x < len; x++) {
+                        var char = num.charAt(x);
+
+                        if (char < '0' || char > '9') {
+
+                            document.getElementById("status5").innerText = "Please enter numeric characters only.";
+                            return false;
+
+
+                        }
+                    }
+                    return true;
+                }
+
+    </script>
+    <meta name="viewport" content="width=device-width" />
+    <title>Reservation Of rooms</title>
+</head>
+
+<body>
+    <h1 style="margin-left:500px ;color:black ">ROOM RESERVATION</h1>
+    <!-- inline CSS on div tag;  external CSS on text boxes;-->
+    <div class="container" style="margin-left:540px;padding-top:20px;padding-left:50px;width:18%;  ">
+
+
+
+        <form method="post" onsubmit="return validations()" action="../../Home/ReserveRoom">
+            <label style="color:white">Name:</label> &nbsp;&nbsp;&nbsp; <input required name="name" placeholder="Enter username here" type="text" id="NameField" onchange="validateName()" </input>
+            <br />
+            <br />
+            <label id="status3"></label>
+            <br />
+          <label style="color:white">Email ID:</label> &nbsp;&nbsp;&nbsp; <input name="emailId" type="email" id="EmailIDField" placeholder="123@gmail.com"> </input>
+            <br />
+            <br />
+            <label id="status2"></label>
+            <br />
+            <label style="color:white">Contact Number:</label> &nbsp;&nbsp;&nbsp; <input name="contactNumber" placeholder="03001234567" type="text" id="contactNumField" onchange="return validateContactNum()"> </input>
+
+            <br />
+            <br />
+
+            <label id="status3"></label>
+            <br />
+
+            <label style="color:white">Address:</label> &nbsp;&nbsp;&nbsp; <input name="address" placeholder="Enter address here " type="text" id="AddressField"> </input>
+
+            <br />
+
+            <br />
+            <label style="color:white">CNIC:</label> &nbsp;&nbsp;&nbsp; <input name="cnic" type="text" id="CNICField" placeholder="12345-6789123-1" onchange="return validateCNIC()"> </input>
+            <br />
+            <br />
+
+            <label id="status6"></label>
+            <br />
+
+
+            <label style="color:white">Floor Type:</label> 
+            <br />
+            <br />
+            <br />
+            <br />
+            <select name="FloorType">
+                <option value="Luxury">Luxury</option>
+                <option value="Economy">Economy</option>
+                <option value="Business">Business</option>
+                
+            </select>
+            <br />
+            <br />
+
+            <label style="color:white">Hotel City:</label>  
+            <br />
+            <br />
+            <select name="HotelCity">
+                <option value="Karachi">Karachi</option>
+                <option value="Lahore">Lahore</option>
+                <option value="Islamabad">Islamabad</option>
+
+            </select>
+            <br />
+            <br />
+
+            <label style="color:white">Check in Date:</label> &nbsp;&nbsp;&nbsp; <input name="checkInDate" type="date" id="checkindateField"> </input>
+            <br />
+            <br />
+
+
+
+            <label style="color:white">Check out date:</label> &nbsp;&nbsp;&nbsp; <input name="checkOutDate" type="date" id="checkoutdateField"> </input>
+            <br />
+            <br />
+
+        <input style="width:80px; margin-top:50px" type="submit" id="Reserve" value="Reserve">    <label id="status" style="color:white">@Model</label>
+
+        </form>
+
+
+    </div>
+</body>
+</html>
+
+
+

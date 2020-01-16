@@ -1,0 +1,77 @@
+﻿
+
+
+
+
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="~/Content/Services.css" />
+
+    <style>
+        body {
+            background: url("https://www.shacksign.com/images/Check%20Out%20Hotel%20Motel%20LED%20Neon%20Sign.jpg");
+            margin: 0px;
+        }
+
+        .container {
+            width: 1000px;
+            height: 200px;
+            background-color: rgba(52,73,94,0.7);
+            border-radius: 4px;
+            margin: 0 auto;
+            margin-left: 350px;
+        }
+
+        input[type=text] {
+            height: 25px;
+            width: 500px;
+        }
+    </style>
+    <script>
+       
+    </script>
+    <meta name="viewport" content="width=device-width" />
+    <title>Billing</title>
+</head>
+<body>
+
+    <h1 style="margin-left:300px;color:black">BILLING</h1>
+
+
+    <!-- inline CSS on div tag;  external CSS on text boxes;-->
+
+    <div class="container" style="padding-top:20px;padding-left:50px; margin-top:12%;width:45%; ">
+
+
+
+        <form method="post"  action="../../Home/viewBill">
+
+
+            <label style="color:white">CustomerID:</label> &nbsp;&nbsp;&nbsp; <input name="CustomerID" placeholder="Enter CustomerID assigned after Room Reservation" type="text" id="CustomerIDField"> </input>
+
+            <br />
+            <br />
+            <label style="color:white">Check-In Date:</label> &nbsp; <input name="CheckInDate" type="date" id="dateField" ></input>
+            <br />
+            
+            <br />
+            <label id="status2"></label>
+            <br />
+            <br />
+
+            <input style="height: 25px; width: 115px;float:left;margin-left:20px" type="submit" id="addButton" value="ViewBill"><label id="status">@Model</label>
+
+        </form>
+
+
+    </div>
+
+</body>
+</html>
+
+
+
+
+
+
+

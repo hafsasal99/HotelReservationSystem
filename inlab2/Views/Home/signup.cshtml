@@ -1,0 +1,269 @@
+﻿@Model string
+<!DOCTYPE html>
+
+<html>
+<head>
+    <style>
+        body {
+            background: url("https://www.jlstms.com/data/wallpapers/55/im57449273.jpg");
+        }
+
+        .container {
+            height: 500px;
+            background-color: rgba(52,73,94,0.7);
+            border-radius: 4px;
+            margin: 0 auto;
+            float: left;
+            margin-top: 40px;
+        }
+
+        input {
+            height: 25px;
+            width: 200px;
+            margin: 0 auto;
+            align-self: auto;
+            float: right;
+            margin-right: 20px;
+            margin-top: 5px;
+        }
+
+        label {
+            float: left;
+            margin-top: 10px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        function validations()
+        {
+
+            var emailID = document.getElementById("EmailIDField").value;
+            var password = document.getElementById("PasswordField").value;
+            var address = document.getElementById("AddressField").value;
+            var contact = document.getElementById("contactNumField").value;
+            var cnic = document.getElementById("CNICField").value;
+
+            if (emailID == "" || password == "" || address == "" || contact == "" || cnic == "") {
+                document.getElementById("status").innerText = "Please fill in the missing fields.";
+                return false;
+            }
+
+            var len = password.length;
+
+            if (len < 7 ) {
+
+                return false;
+            }
+            len = name.length;
+            for (var x = 0; x < len; x++) {
+                var char = name.charAt(x);
+                if (((char < 65 || (char > 90 && char < 97) || char > 122))) {
+                    if (char != ' ')
+                    {
+                        return false;
+                    }
+                }
+            }
+            var len = cnic.length;
+            if (len != 7) {
+
+                return false;
+            }
+            if (cnic.charAt(5) != '-' || cnic.charAt(13) != '-') {
+
+                return false;
+            }
+            for (var x = 0; x < len; x++) {
+                var char = cnic.charAt(x);
+                if (x != 5 && x != 13) {
+                    if (char < '0' || char > '9') {
+
+
+                        return false;
+
+                    }
+                }
+            }
+                var len = num.length;
+                if (len != 11) {
+
+                    return false;
+                }
+
+                for (var x = 0; x < len; x++) {
+                    var char = num.charAt(x);
+
+                    if (char < '0' || char > '9') {
+
+                        return false;
+
+
+                    }
+                }
+                return true;
+            }
+                function checkForEmptyFields() {
+
+                    var emailID = document.getElementById("EmailIDField").value;
+                    var password = document.getElementById("PasswordField").value;
+                    var address = document.getElementById("AddressField").value;
+                    var contact = document.getElementById("contactNumField").value;
+                    var cnic = document.getElementById("CNICField").value;
+                    if (emailID=="" || password=="" || address=="" || contact=="" || cnic=="") {
+                        document.getElementById("status").innerText = "Please fill in the missing fields.";
+                        return false;
+                    }
+                    return true;
+                }
+
+                function validatePassword() {
+                    var password = document.getElementById("PasswordField").value;
+                    var len = password.length;
+
+                    if (len<7) {
+                        document.getElementById("status2").innerText = "Password must be at least 7 characters long";
+                        return false;
+                    }
+
+                    else
+
+                        return true;
+                }
+                function validateName() {
+                    var name = document.getElementById("NameField").value;
+                    var len = name.length;
+
+
+                    for (var x = 0; x < len; x++) {
+                        var char = name.charAt(x);
+                        if (((char < 65 || (char > 90 && char < 97) || char > 122))) {
+                            if (char != ' ') {
+                                document.getElementById("status3").innerText = "Please enter a name that contains alphabets only.";
+                                return false;
+                            }
+                        }
+                    }
+                    return true;
+                }
+
+                function validateCNIC()
+                {
+                    var cnic = document.getElementById("CNICField").value;
+                    var len = cnic.length;
+                    if (len != 15) {
+                        document.getElementById("status4").innerText = "CNIC must be 15 characters long.";
+                        return false;
+                    }
+                    if (cnic.charAt(5) != '-' || cnic.charAt(13) != '-') {
+                        document.getElementById("status4").innerText = "Please enter a cnic in the specified format. Hyphen Missing";
+                        return false;
+                    }
+                    for (var x = 0; x < len; x++) {
+                        var char = cnic.charAt(x);
+                        if (x == 5 || x==13)
+                        {
+                            if (cnic.charAt(x) != '-') { document.getElementById("status4").innerText = "Please enter a cnic in the specified format. Hyphen Missing";
+                                return false;}
+                        }
+                        else
+                        {
+                            if (char < '0' || char > '9') {
+
+                                document.getElementById("status4").innerText = "Please enter a cnic in the specified format.";
+                                return false;
+
+                            }
+                            }
+                        }
+
+                    return true;
+                }
+                function validateContactNum() {
+                    var num = document.getElementById("contactNumField").value;
+                    var len = num.length;
+                    if (len != 11) {
+                        document.getElementById("status5").innerText = "Please enter a valid 11 digit phone number without spaces.";
+                        return false;
+                    }
+
+                    for (var x = 0; x < len; x++) {
+                        var char = num.charAt(x);
+
+                        if (char < '0' || char > '9') {
+
+                            document.getElementById("status5").innerText = "Please enter numeric characters only.";
+                            return false;
+
+
+                        }
+                    }
+                    return true;
+                }
+
+    </script>
+    <meta name="viewport" content="width=device-width" />
+    <title>SignUp</title>
+</head>
+
+<body>
+    <h1 style="margin-left:445px ;color:black ">HOTEL RESERVATION SYSTEM</h1>
+    <!-- inline CSS on div tag;  external CSS on text boxes;-->
+    <div class="container" style="margin-left:540px;padding-top:20px;padding-left:50px;width:18%;  ">
+
+
+
+        <form method="post" onsubmit="" action="../../Home/addNewMember">
+            <label style="color:white">Name:</label> &nbsp;&nbsp;&nbsp; <input required name="Name" placeholder="Enter username here" type="text" id="NameField" onchange="validateName()"> </input>
+            <br />
+            <br />
+            <label id="status3"></label>
+            <br />
+            <br />
+
+            <label style="color:white">Email ID:</label> &nbsp;&nbsp;&nbsp; <input name="EmailID" type="text" id="EmailIDField" placeholder="123@gmail.com"> </input>
+            <br />
+            <label style="color:white">UserName:</label> &nbsp;&nbsp;&nbsp; <input name="UserName" placeholder="xyzHere" type="text" id="UserNameField" > </input>
+
+            <br />
+            <br />
+            <br />
+            <label style="color:white"> Password:</label> &nbsp;&nbsp;&nbsp; <input name="Password" placeholder="Enter password here" type="password" id="PasswordField" onchange="return validatePassword()"> </input>
+            <br />
+            <br />
+            <label id="status2"></label>
+            <br />
+
+
+            <label style="color:white">Contact Number:</label> &nbsp;&nbsp;&nbsp; <input name="contactNum" placeholder="03001234567" type="text" id="contactNumField" onchange="return validateContactNum()"> </input>
+
+            <br />
+            <br />
+            <label id="status5"></label>
+
+           
+            <br />
+            <label style="color:white">Address:</label> &nbsp;&nbsp;&nbsp; <input name="Address" placeholder="Enter address here " type="text" id="AddressField"> </input>
+
+            <br />
+
+            <br />
+            <label style="color:white">CNIC:</label> &nbsp;&nbsp;&nbsp; <input name="CNIC" type="text" id="CNICField" placeholder="12345-6789123-1" onchange="return validateCNIC()"> </input>
+            <br />
+            <br />
+            <label id="status4"></label>
+
+
+            <br />
+            <br />
+            <label id="status" style="color:white">@Model</label>
+            <br />
+            <br />
+            <input style="width:80px; margin-top:50px" type="submit" id="loginButton" value="Sign Up">    
+
+        </form>
+
+
+    </div>
+</body>
+</html>
+

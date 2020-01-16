@@ -1,0 +1,118 @@
+﻿
+@{
+    Layout = null;
+}
+@using inlab2.Models
+@model List<Employee>
+<!DOCTYPE html>
+
+<html>
+<head>
+
+
+    <link rel="stylesheet" type="text/css" href="~/Content/emplList.css" />
+
+    <style>
+        body {
+            background: url("http://www.elitis.fr/static/elitis/img/VIGNETTE_MENU_PP_2019.jpg");
+            margin: 0px;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        th {
+            height: 50px;
+        }
+
+        p.a {
+            margin: 40px 0;
+        }
+
+        p.b {
+            margin: 20px 0;
+        }
+
+        p.ex1 {
+            margin-top: 40%;
+        }
+
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        td {
+            height: 50px;
+            vertical-align: bottom;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        th {
+            display: table-cell;
+            vertical-align: inherit;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        td {
+            color: blueviolet;
+            background-color: white;
+            text-align: center;
+        }
+
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+
+        div.a {
+            text-align: center;
+        }
+    </style>
+
+
+    <meta name="viewport" content="width=device-width" />
+    <title>List Of Employees</title>
+
+</head>
+<body>
+    <div>
+
+        <div class="a">
+            <h1>List Of Employees</h1>
+
+
+            <table align="center">
+
+                <thead><tr><th>Employee ID</th> <th>Name</th> <th>Contact No</th><th>Designation</th><th>Salary</th><th>Hotel ID</th></tr></thead>
+
+                @foreach (Employee emp in Model)
+            {
+                    <tr>
+                        <td>@emp.EmployeeID</td>
+                        <td>@emp.Name</td>
+                        <td>@emp.ContactNo</td>
+                        <td>@emp.Designation</td>
+                        <td>@emp.Salary</td>
+                        <td>@emp.HotelID</td>
+                    </tr>
+                }
+
+            </table>
+
+        </div>
+</body>
+</html>
+
+

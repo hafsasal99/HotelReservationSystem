@@ -1,0 +1,100 @@
+﻿
+
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="~/Content/roomsAvailable.css" />
+
+    <style>
+        body {
+            background: url("http://www.interiorexteriorplan.com/wp-content/uploads/2009/11/luxurious-bedroom-wallpaper_1280x768_24729.jpg");
+            margin: 0px;
+        }
+
+        .container {
+            width: 1000px;
+            height: 200px;
+            background-color: rgba(52,73,94,0.7);
+            border-radius: 4px;
+            margin: 0 auto;
+            margin-left: 350px;
+        }
+
+        input[type=text] {
+            height: 25px;
+            width: 500px;
+        }
+    </style>
+
+    <script>
+        function checkForEmptyFields() {
+            alert("a");
+            var Hotel = document.getElementById("HotelIDField").value;
+            var Floor = document.getElementById("FloorIDField").value;
+            if (Hotel == null || Floor == "") {
+                document.getElementById("status").innerText = "Please fill in the missing fields.";
+                return false;
+            }
+            return true;
+        }
+
+        function validation1()
+        {
+            var HotelID = document.getElementById("HotelIDField").value;
+            var FloorID = document.getElementById("FloorIDField").value;
+            if (HotelID == null || FloorID == "") {
+                alert( "Please fill in the missing fields.");
+                return false;
+            }
+            if (HotelID < '1' || HotelID > '3') {
+
+                document.getElementById("status").innerText = "Please enter correct hotelID ie: between 1-3.";
+                return false;
+
+            }
+            if (FloorID < '1' || FloorID > '3') {
+
+                document.getElementById("status").innerText = "Please enter correct FloorlID ie: between 1-3.";
+                return false;
+
+            }
+            return true;
+        }
+
+    </script>
+    <meta name="viewport" content="width=device-width" />
+    <title>List of Available Rooms for the Required Hotel and Floor NO</title>
+</head>
+<body>
+
+    <h1 style="margin-left:300px;color:black">List of Available Rooms for the Required Hotel and Floor NO</h1>
+
+
+    <!-- inline CSS on div tag;  external CSS on text boxes;-->
+
+    <div class="container" style="padding-top:20px;padding-left:50px; margin-top:12%;width:45%; ">
+
+
+
+        <form method="post" onsubmit="return validation1()" action="../../Home/AvailableRooms">
+
+
+            <label style="color:white">HotelID:</label> &nbsp;&nbsp;&nbsp; <input name="HotelID" type="text" id="HotelIDField"> </input>
+
+            <br />
+            <br />
+            <label style="color:white">FloorID:</label> &nbsp; <input name="FloorID" type="text" id="FloorIDField"></input>
+            <br />
+            <br />
+
+
+            <input style="height: 25px; width: 115px;float:left;margin-left:20px" type="submit" id="addButton" value="Available Rooms"><label id="status">@Model</label>
+
+        </form>
+
+
+    </div>
+
+</body>
+</html>
+
+

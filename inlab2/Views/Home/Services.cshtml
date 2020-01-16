@@ -1,0 +1,85 @@
+﻿
+
+
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="~/Content/Services.css" />
+
+    <style>
+        body {
+            background: url("https://www.royalorchidhotels.com/Images/slider/22_46_2018_12_46_2811.jpg");
+            margin: 0px;
+        }
+
+        .container {
+            width: 950px;
+            height: 200px;
+            text-align: center;
+            background-color: rgba(52,73,94,0.7);
+            border-radius: 4px;
+            margin: 0 auto;
+            margin-left: 375px;
+        }
+
+        input {
+            height: 25px;
+            width: 400px;
+        }
+       
+    </style>
+    <script type="text/javascript">
+       
+
+        function validateServiceID() {
+            var id = document.getElementById("ServiceIDField").value;
+            
+
+            if (id<0 || id >7) {
+                document.getElementById("status2").innerText = "Invalid Service ID";
+                return false;
+            }
+
+            else
+
+            return true;
+        }
+       
+    </script>
+    <meta name="viewport" content="width=device-width" />
+    <title>login</title>
+</head>
+<body>
+
+    <h1 style="margin-left:400px;margin-top:100px;colour:black">AVAIL THE BEST OF OUR SERVICES!</h1>
+    
+
+    <!-- inline CSS on div tag;  external CSS on text boxes;-->
+
+    <div class="container" style="padding-top:20px;padding-left:50px; margin-top:7%;width:40%;  ">
+
+
+
+        <form method="post" onsubmit="return validateServiceID()" action="../../Home/selectService">
+
+
+            <label style="color:white;margin-left:10px">CustomerID:</label> &nbsp;&nbsp;&nbsp; <input name="CustomerID" placeholder="Enter CustomerID assigned after Room Reservation" type="text" id="CustomerIDField"> </input>
+
+            <br />
+            <br />
+            <label style="color:white;margin-left:10px">ServiceID:</label> &nbsp;&nbsp;&nbsp; <input name="ServiceID" placeholder="Enter ServiceID to avail a service offered at your floor" type="text" id="ServiceIDField" onchange="return validateServiceID()"> </input>
+            <br />
+            <br />
+            <label id="status2"></label>
+            <br />
+            <br />
+
+            <input style="height: 25px; width: 115px;float:left;margin-left:10px" type="submit" id="addButton" value="Add Service">    <label id="status">@Model</label>
+            
+        </form>
+
+
+    </div>
+
+</body>
+</html>
+

@@ -1,0 +1,98 @@
+﻿
+
+
+
+
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="~/Content/Services.css" />
+
+    <style>
+        body {
+            background: url("https://wallpapercave.com/wp/wp4062048.jpg");
+            margin: 0px;
+        }
+
+        .container {
+            width: 1000px;
+            height: 200px;
+            background-color: rgba(52,73,94,0.7);
+            border-radius: 4px;
+            margin: 0 auto;
+            margin-left: 350px;
+        }
+
+        input[type=text] {
+            height: 25px;
+            width: 500px;
+        }
+
+        input[type=password] {
+            height: 25px;
+            width: 500px;
+        }
+    </style>
+    <script>
+       function validate()
+       {
+           var password = document.getElementById("passwordField").value;
+           if(password!="admin123")
+           {
+               alert("Only admins can access this page.If you're an admin make sure you've entered the right password");
+               return false;
+
+           }
+           return true;
+       }
+    </script>
+    <meta name="viewport" content="width=device-width" />
+    <title>Restricted Access</title>
+</head>
+<body>
+
+    
+
+
+    <!-- inline CSS on div tag;  external CSS on text boxes;-->
+
+    <div class="container" style="padding-top:20px;padding-left:50px; margin-top:12%;width:45%;  ">
+
+
+
+        <form method="post" onsubmit="return validate()" action="../../Home/delete">
+            <label style="color:white">Password:</label> &nbsp;&nbsp;&nbsp; <input name="Password" placeholder="Enter password" type="password" id="passwordField"> </input>
+
+            <br />
+            <br />
+
+            <label style="color:white">UserID:</label> &nbsp;&nbsp;&nbsp; <input name="UserID" placeholder="Enter UserID" type="text" id="userIDField"> </input>
+
+            <br />
+            <br />
+         
+            <label style="color:white">User Type:</label> &nbsp; <input name="UserType" type="radio" value="Employee"><label style="color:white">Employee</label></input>
+            <br />
+
+            <input name="UserType" type="radio" value="Customer" style="margin-left:100px"><label style="color:white">
+                Customer
+            </label></input>
+            <label id="status2"></label>
+            <br />
+            <br />
+
+            <input style="height: 25px; width: 115px;float:left;margin-left:20px" type="submit" id="addButton" value="Delete"><label id="status">@Model</label>
+
+        </form>
+
+
+    </div>
+
+</body>
+</html>
+
+
+
+
+
+
+
